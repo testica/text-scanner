@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Text Scanner</string>
+    <string name="upload_an_image">Upload an image</string>
+    <string name="camera">camera</string>
 </resources>
