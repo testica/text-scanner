@@ -15,22 +15,10 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <com.isseiaoki.simplecropview.CropImageView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cropImageView"
+    <ImageView
+        android:id="@+id/croppedImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        custom:scv_crop_mode="free"
-        custom:scv_handle_color="@color/colorAccent"
-        custom:scv_guide_color="@color/colorAccent"
-        custom:scv_frame_color="@color/colorAccent"
-        custom:scv_handle_size="14dp"
-        custom:scv_touch_padding="8dp"
-        custom:scv_handle_show_mode="show_always"
-        custom:scv_guide_show_mode="show_always"
-        custom:scv_min_frame_size="50dp"
-        custom:scv_frame_stroke_weight="1dp"
-        custom:scv_guide_stroke_weight="1dp"
         android:layout_below="@+id/toolbar" />
 
     <android.support.design.widget.FloatingActionButton

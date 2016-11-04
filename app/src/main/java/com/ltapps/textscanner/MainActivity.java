@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.io.File;
@@ -23,11 +24,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Uri outputFileUri;
     private View mView;
-
+    public final static String EXTRA_MESSAGE = "com.ltapps.textscanner.message";
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         mView = findViewById(R.id.mainView);
         mView.setOnClickListener(this);
 
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextStep(String file) {
         Intent intent = new Intent(this, CropAndRotate.class);
-        intent.putExtra("com.ltapps.textscanner.message", file);
+        intent.putExtra(EXTRA_MESSAGE, file);
         startActivity(intent);
     }
 }

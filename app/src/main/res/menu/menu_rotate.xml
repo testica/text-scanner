@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/rotate_left"
+        android:icon="@mipmap/ic_rotate_left_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="Rotate -90º"
+        >
+    </item>
+    <item
+        android:id="@+id/rotate_right"
+        android:icon="@mipmap/ic_rotate_right_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="Rotate 90º"
+        >
+    </item>
+</menu>
