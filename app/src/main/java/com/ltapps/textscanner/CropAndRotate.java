@@ -2,6 +2,7 @@ package com.ltapps.textscanner;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -16,85 +17,52 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.isseiaoki.simplecropview.CropImageView;
-import com.isseiaoki.simplecropview.callback.CropCallback;
-import com.isseiaoki.simplecropview.callback.LoadCallback;
-import com.isseiaoki.simplecropview.callback.SaveCallback;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.FileNotFoundException;
 
 
 public class CropAndRotate extends AppCompatActivity implements View.OnClickListener, Toolbar.OnMenuItemClickListener{
-    private CropImageView mCropView;
     private Toolbar toolbar;
     private FloatingActionButton mFab;
     public static Bitmap croppedImage;
     private String message;
-    Parcelable p;
+    CropImageView cropImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crop_and_rotate);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
         Intent intent = getIntent();
         message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        mCropView = (CropImageView) findViewById(R.id.cropImageView);
+        cropImageView = (CropImageView) findViewById(R.id.cropImageView);
+
+        try {
+            cropImageView.setImageBitmap(BitmapFactory.decodeStream(getContentResolver().openInputStream(Uri.parse(message))));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         mFab = (FloatingActionButton) findViewById(R.id.nextStep);
         mFab.setOnClickListener(this);
-        mCropView.startLoad(
-                Uri.parse(message)
-                ,
-                new LoadCallback() {
-                    @Override
-                    public void onSuccess() {}
 
-                    @Override
-                    public void onError() {}
-                });
-
-        mCropView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_MOVE:
-                        mFab.setVisibility(View.INVISIBLE);
-                        break;
-                    default:
-                        mFab.setVisibility(View.VISIBLE);
-                }
-                return false;
-            }
-        });
     }
+
 
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.nextStep){
-            mCropView.startCrop(null, new CropCallback() {
+            cropImageView.setOnCropImageCompleteListener(new CropImageView.OnCropImageCompleteListener() {
                 @Override
-                public void onSuccess(Bitmap cropped) {
-                    croppedImage = cropped;
+                public void onCropImageComplete(CropImageView view, CropImageView.CropResult result) {
+                    croppedImage = result.getBitmap();
                     Intent intent = new Intent(CropAndRotate.this, Umbralization.class);
                     startActivity(intent);
                 }
-
-                @Override
-                public void onError() {
-
-                }
-            }, new SaveCallback() {
-                @Override
-                public void onSuccess(Uri outputUri) {
-
-                }
-
-                @Override
-                public void onError() {
-
-                }
             });
+            cropImageView.getCroppedImageAsync();
         }
     }
 
@@ -111,10 +79,10 @@ public class CropAndRotate extends AppCompatActivity implements View.OnClickList
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.rotate_left:
-                mCropView.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D);
+                cropImageView.rotateImage(-90);
                 break;
             case R.id.rotate_right:
-                mCropView.rotateImage(CropImageView.RotateDegrees.ROTATE_90D);
+                cropImageView.rotateImage(90);
                 break;
         }
         return false;

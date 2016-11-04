@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:crop="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,23 +16,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <com.isseiaoki.simplecropview.CropImageView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
+    <com.theartofdev.edmodo.cropper.CropImageView
         android:id="@+id/cropImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        custom:scv_crop_mode="free"
-        custom:scv_handle_color="@color/colorAccent"
-        custom:scv_guide_color="@color/colorAccent"
-        custom:scv_frame_color="@color/colorAccent"
-        custom:scv_handle_size="14dp"
-        custom:scv_touch_padding="8dp"
-        custom:scv_handle_show_mode="show_always"
-        custom:scv_guide_show_mode="show_always"
-        custom:scv_min_frame_size="50dp"
-        custom:scv_frame_stroke_weight="1dp"
-        custom:scv_guide_stroke_weight="1dp"
-        android:layout_below="@+id/toolbar" />
+        android:layout_below="@+id/toolbar"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/nextStep"

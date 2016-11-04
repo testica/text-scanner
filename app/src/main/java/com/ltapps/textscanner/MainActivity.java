@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Uri outputFileUri;
     private View mView;
     public final static String EXTRA_MESSAGE = "com.ltapps.textscanner.message";
-    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toolbar will now take on default Action Bar characteristics
         setSupportActionBar(toolbar);
         mView = findViewById(R.id.mainView);
         mView.setOnClickListener(this);

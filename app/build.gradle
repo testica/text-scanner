@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'
     compile 'com.rmtheis:tess-two:6.0.4'
-    compile 'com.isseiaoki:simplecropview:1.1.4'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.1'
 }
