@@ -33,7 +33,7 @@
             android:id="@+id/umbralization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="10"/>
+            android:max="50"/>
     </LinearLayout>
 
     <ImageView

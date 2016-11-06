@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CropAndRotate" />
-        <activity android:name=".Umbralization" />
+        <activity android:name=".Binarization" />
     </application>
 
 
