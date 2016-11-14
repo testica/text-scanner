@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
-import com.googlecode.leptonica.android.Binarize;
+
 import com.googlecode.leptonica.android.Pix;
 import com.googlecode.leptonica.android.GrayQuant;
 
