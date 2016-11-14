@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/copy_text"
+        android:icon="@mipmap/ic_content_copy_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="Copy"
+        >
+    </item>
+    <item
+        android:id="@+id/new_scan"
+        android:icon="@mipmap/ic_open_in_new_white_24dp"
+        app:showAsAction="ifRoom"
+        android:title="New scan"
+        >
+    </item>
+</menu>
