@@ -12,9 +12,15 @@ import android.os.Environment;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +36,7 @@ import java.util.concurrent.Executors;
 
 public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItemClickListener {
     private Toolbar toolbar;
+    private EditText search;
     private TextView textView;
     ProgressDialog progressCopy, progressOcr;
     TessBaseAPI baseApi;
@@ -46,6 +53,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
         textView = (TextView) findViewById(R.id.textExtracted);
+        search = (EditText) findViewById(R.id.search_text);
         // Setting progress dialog for copy job.
         progressCopy = new ProgressDialog(Recognizer.this);
         progressCopy.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -60,6 +68,33 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         progressOcr.setCancelable(false);
         progressOcr.setTitle("OCR");
         progressOcr.setMessage("Extracting text, please wait");
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String ett = search.getText().toString().replaceAll("\n"," ");;
+                String tvt = textView.getText().toString().replaceAll("\n"," ");
+                textView.setText(textView.getText().toString());
+                int ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(),0);
+                Spannable WordtoSpan = new SpannableString( textView.getText() );
+                for(int ofs=0;ofs<tvt.length() && ofe!=-1;ofs=ofe+1)
+                {
+                    ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(),ofs);
+                    if(ofe == -1)
+                        break;
+                    else
+                    {
+                        WordtoSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe+ett.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        textView.setText(WordtoSpan, TextView.BufferType.SPANNABLE);
+                    }
+
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
 
         copy.execute();
         ocr.execute();
@@ -79,18 +114,19 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         AssetManager assetManager = getAssets();
         String[] files = null;
         try {
-            files = assetManager.list("");
+            files = assetManager.list("trainneddata");
         } catch (IOException e) {
             Log.e("tag", "Failed to get asset file list.", e);
         }
         for(String filename : files) {
+            Log.i("files",filename);
             InputStream in = null;
             OutputStream out = null;
             String dirout= DATA_PATH + "tessdata/";
             File outFile = new File(dirout, filename);
             if(!outFile.exists()) {
                 try {
-                    in = assetManager.open(filename);
+                    in = assetManager.open("trainneddata/"+filename);
                     (new File(dirout)).mkdirs();
                     out = new FileOutputStream(outFile);
                     copyFile(in, out);
