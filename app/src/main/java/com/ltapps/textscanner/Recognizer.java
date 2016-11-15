@@ -9,7 +9,6 @@ import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -24,7 +23,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.googlecode.leptonica.android.Binarize;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -32,8 +30,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItemClickListener {
     private Toolbar toolbar;
