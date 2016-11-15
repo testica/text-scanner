@@ -15,6 +15,7 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +36,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
     private Toolbar toolbar;
     private EditText search;
     private TextView textView;
+    private String textScanned;
     ProgressDialog progressCopy, progressOcr;
     TessBaseAPI baseApi;
     AsyncTask<Void, Void, Void> copy = new copyTask();
@@ -50,6 +52,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
         textView = (TextView) findViewById(R.id.textExtracted);
+        textView.setMovementMethod(new ScrollingMovementMethod());
         search = (EditText) findViewById(R.id.search_text);
         // Setting progress dialog for copy job.
         progressCopy = new ProgressDialog(Recognizer.this);
@@ -65,6 +68,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         progressOcr.setCancelable(false);
         progressOcr.setTitle("OCR");
         progressOcr.setMessage("Extracting text, please wait");
+        textScanned = "";
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,6 +113,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         baseApi = new TessBaseAPI();
         baseApi.init(DATA_PATH, language,TessBaseAPI.OEM_TESSERACT_ONLY);
         baseApi.setImage(Binarization.umbralization);
+        textScanned = baseApi.getUTF8Text();
 
     }
 
@@ -164,6 +169,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressCopy.cancel();
+            progressOcr.show();
 
         }
 
@@ -180,14 +186,13 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressOcr.show();
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressOcr.cancel();
-            textView.setText(baseApi.getUTF8Text());
+            textView.setText(textScanned);
 
         }
 
