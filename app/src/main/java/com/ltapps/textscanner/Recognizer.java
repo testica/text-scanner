@@ -75,26 +75,28 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String ett = search.getText().toString().replaceAll("\n"," ");;
-                String tvt = textView.getText().toString().replaceAll("\n"," ");
-                textView.setText(textView.getText().toString());
-                int ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(),0);
-                Spannable WordtoSpan = new SpannableString( textView.getText() );
-                for(int ofs=0;ofs<tvt.length() && ofe!=-1;ofs=ofe+1)
-                {
-                    ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(),ofs);
-                    if(ofe == -1)
-                        break;
-                    else
-                    {
-                        WordtoSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe+ett.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        textView.setText(WordtoSpan, TextView.BufferType.SPANNABLE);
-                    }
 
-                }
             }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) {
+                String ett = search.getText().toString().replaceAll("\n"," ");
+                String tvt = textView.getText().toString().replaceAll("\n"," ");
+                textView.setText(textView.getText().toString());
+                if(!ett.toString().isEmpty()) {
+                    int ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(), 0);
+                    Spannable WordtoSpan = new SpannableString(textView.getText());
+                    for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+                        ofe = tvt.toLowerCase().indexOf(ett.toLowerCase(), ofs);
+                        if (ofe == -1)
+                            break;
+                        else {
+                            WordtoSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + ett.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            textView.setText(WordtoSpan, TextView.BufferType.SPANNABLE);
+                        }
+
+                    }
+                }
+            }
         });
 
         copy.execute();
