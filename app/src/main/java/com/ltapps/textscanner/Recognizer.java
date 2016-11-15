@@ -9,6 +9,7 @@ import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -90,7 +91,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
                         if (ofe == -1)
                             break;
                         else {
-                            WordtoSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + ett.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            WordtoSpan.setSpan(new BackgroundColorSpan(ContextCompat.getColor(Recognizer.this, R.color.colorAccent)), ofe, ofe + ett.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             textView.setText(WordtoSpan, TextView.BufferType.SPANNABLE);
                         }
 
