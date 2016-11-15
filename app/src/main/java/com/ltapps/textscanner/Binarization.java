@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +40,8 @@ public class Binarization extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.binarization);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ViewCompat.setElevation(toolbar,10);
+        ViewCompat.setElevation((LinearLayout) findViewById(R.id.extension),10);
         spinner = (Spinner) findViewById(R.id.language);
 
         img = (ImageView) findViewById(R.id.croppedImage);

@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +54,8 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
+        ViewCompat.setElevation(toolbar,10);
+        ViewCompat.setElevation((LinearLayout) findViewById(R.id.extension),10);
         textView = (TextView) findViewById(R.id.textExtracted);
         textView.setMovementMethod(new ScrollingMovementMethod());
         search = (EditText) findViewById(R.id.search_text);

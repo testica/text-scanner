@@ -11,6 +11,7 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Toolbar will now take on default Action Bar characteristics
         setSupportActionBar(toolbar);
+        ViewCompat.setElevation(toolbar,10);
         mView = findViewById(R.id.mainView);
         mView.setOnClickListener(this);
 
