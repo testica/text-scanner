@@ -13,7 +13,16 @@
         app:titleTextColor="@color/colorTitle"
         android:background="@color/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/language"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+
+    </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:id="@+id/extension"
         android:padding="35dp"

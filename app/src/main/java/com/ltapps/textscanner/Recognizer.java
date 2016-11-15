@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.googlecode.leptonica.android.Binarize;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -103,8 +104,14 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
     }
 
     private void recognizeText(){
+        String language = "";
+        if (Binarization.language == 0)
+            language = "eng";
+        else
+            language= "spa";
+
         baseApi = new TessBaseAPI();
-        baseApi.init(DATA_PATH, "eng",TessBaseAPI.OEM_TESSERACT_ONLY);
+        baseApi.init(DATA_PATH, language,TessBaseAPI.OEM_TESSERACT_ONLY);
         baseApi.setImage(Binarization.umbralization);
 
     }
