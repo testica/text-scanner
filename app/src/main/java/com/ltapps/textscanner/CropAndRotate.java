@@ -2,22 +2,17 @@ package com.ltapps.textscanner;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-
 import android.view.MenuItem;
 import android.view.View;
 
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.FileNotFoundException;
 
 
 public class CropAndRotate extends AppCompatActivity implements View.OnClickListener, Toolbar.OnMenuItemClickListener{
@@ -38,11 +33,7 @@ public class CropAndRotate extends AppCompatActivity implements View.OnClickList
         message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         cropImageView = (CropImageView) findViewById(R.id.cropImageView);
 
-        try {
-            cropImageView.setImageBitmap(BitmapFactory.decodeStream(getContentResolver().openInputStream(Uri.parse(message))));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        cropImageView.setImageUriAsync(Uri.parse(message));
         mFab = (FloatingActionButton) findViewById(R.id.nextStep);
         mFab.setOnClickListener(this);
 
