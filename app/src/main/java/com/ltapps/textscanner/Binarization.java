@@ -65,8 +65,8 @@ public class Binarization extends AppCompatActivity implements View.OnClickListe
         });
         OtsuThresholder otsuThresholder = new OtsuThresholder();
         int threshold = otsuThresholder.doThreshold(pix.getData());
+        /* increase threshold because is better*/
         threshold += 20;
-       //Log.i("Threshold", String.valueOf(threshold));
         umbralization = com.googlecode.leptonica.android.WriteFile.writeBitmap(GrayQuant.pixThresholdToBinary(pix,threshold));
         img.setImageBitmap(umbralization);
         seekBar = (AppCompatSeekBar) findViewById(R.id.umbralization);
@@ -77,8 +77,6 @@ public class Binarization extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        //pix = GrayQuant.pixThresholdToBinary(pix,Integer.valueOf(((254 * i)/10)));
-        //Log.i("Seek",Integer.valueOf(((254 * i)/10)).toString());
     }
 
     @Override
@@ -88,7 +86,6 @@ public class Binarization extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-       //Log.i("Seek",Integer.valueOf(((254 * seekBar.getProgress())/50)).toString());
 
         umbralization = com.googlecode.leptonica.android.WriteFile.writeBitmap(
                 GrayQuant.pixThresholdToBinary(pix,Integer.valueOf(((254 * seekBar.getProgress())/50)))
