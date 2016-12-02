@@ -17,3 +17,12 @@ OCR Android App using tesseract
 
 ##Support
 - Android 4.0 +
+
+## Planned Features
+On [Projects tab](https://github.com/testica/text-scanner/projects/1) you can trace the future possible features and its status.
+
+**Backlog**     → a simple idea 
+
+**Ready**       → idea now is a possible feature waiting to be developed
+
+**In progress** → feature being developed
