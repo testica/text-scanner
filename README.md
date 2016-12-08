@@ -3,9 +3,7 @@ OCR Android App using tesseract
 
 <a href='https://play.google.com/store/apps/details?id=com.ltapps.textscanner&hl=en&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/badge_new.png'/></a>
 
-<a href="http://android.oms.apps.opera.com/el_us/text_scanner_ocr.html?pos=7">
-<img height="49px" src="https://www.frostyelk.se/frostywp/wp-content/uploads/2013/08/oms_badge_white.png"/>
-</a>
+<a href="http://apps.opera.com/badge.php?a=c&v=gray&did=209242&pid=892908" target="_blank"><img src="https://apps.opera.com/badge.php?a=s&v=gray&did=209242&pid=892908" height="49" alt="Opera Mobile Store"  title="Opera Mobile Store" /></a>
 
 ##Features
 - Crop
