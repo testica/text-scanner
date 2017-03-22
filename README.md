@@ -5,7 +5,7 @@ OCR Android App using tesseract
 
 <a href="http://android.oms.apps.opera.com/el_us/text_scanner_ocr.html?pos=7"><img src="https://apps.opera.com/badge.php?a=s&v=dark&did=209242&pid=892908" height="49" alt="Opera Mobile Store"  title="Opera Mobile Store" /></a>
 
-##Features
+## Features
 - Crop
 - Rotate
 - Binarize
@@ -13,11 +13,11 @@ OCR Android App using tesseract
   - Search
   - Copy to clipboard
   
-##Libraries
+## Libraries
 - [android-image-cropper](https://github.com/ArthurHub/Android-Image-Cropper): for image cropping.
 - [tess-two](https://github.com/rmtheis/tess-two): to recognize text (tesseract) and binarize (leptonica).
 
-##Support
+## Support
 - Android 4.0 +
 
 ## Planned Features
