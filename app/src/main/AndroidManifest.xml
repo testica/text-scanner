@@ -20,8 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".CropAndRotate" />
-        <activity android:name=".Binarization" />
-        <activity android:name=".Recognizer" />
+        <activity
+            android:name=".Binarization"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".Recognizer"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 
