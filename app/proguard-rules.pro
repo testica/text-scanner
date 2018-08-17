@@ -15,3 +15,10 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-dontwarn android.test.**
+
+
+-keep class org.junit.** { *; }
+-dontwarn org.junit.**
+
