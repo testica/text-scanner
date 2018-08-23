@@ -14,6 +14,7 @@ OCR Android App using tesseract
 ## Libraries
 - [android-image-cropper](https://github.com/ArthurHub/Android-Image-Cropper): for image cropping.
 - [tess-two](https://github.com/rmtheis/tess-two): to recognize text (tesseract) and binarize (leptonica).
+- [firebase](https://firebase.google.com/docs/android/setup): to report metrics (for development purpose, you can [remove firebase dependencies](https://github.com/testica/text-scanner/pull/5) or add your own google-services.json).
 
 ## Support
 - Android 4.0 +
