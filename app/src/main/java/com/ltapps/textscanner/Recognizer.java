@@ -27,6 +27,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -44,6 +47,7 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
     TessBaseAPI baseApi;
     AsyncTask<Void, Void, Void> copy = new copyTask();
     AsyncTask<Void, Void, Void> ocr = new ocrTask();
+    private AdView mAdView;
 
     private static final String DATA_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.ltapps.textscanner/";
 
@@ -51,6 +55,13 @@ public class Recognizer extends AppCompatActivity implements  Toolbar.OnMenuItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recognizer);
+
+        // AdMob App ID
+        MobileAds.initialize(this, BuildConfig.AdMobAppId);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
