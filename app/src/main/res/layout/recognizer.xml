@@ -54,5 +54,4 @@
         ads:adUnitId="@string/admob_unit_id">
     </com.google.android.gms.ads.AdView>
 
-
 </RelativeLayout>
