@@ -9,8 +9,8 @@ android {
         applicationId "com.ltapps.textscanner"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3"
 
         buildConfigField 'String', 'AdMobAppId', '"ca-app-pub-3940256099942544~3347511713"'
         resValue 'string', 'admob_app_id', '"ca-app-pub-3940256099942544~3347511713"'
