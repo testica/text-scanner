@@ -14,7 +14,7 @@ android {
 
         buildConfigField 'String', 'AdMobAppId', '"ca-app-pub-3940256099942544~3347511713"'
         resValue 'string', 'admob_app_id', '"ca-app-pub-3940256099942544~3347511713"'
-        resValue 'string', 'admob_unit_id', 'ca-app-pub-3940256099942544/6300978111"'
+        resValue 'string', 'admob_unit_id', '"ca-app-pub-3940256099942544/6300978111"'
     }
     buildTypes {
         release {
@@ -37,7 +37,7 @@ dependencies {
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
     implementation 'com.rmtheis:tess-two:6.0.4'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.3.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.google.firebase:firebase-ads:15.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
